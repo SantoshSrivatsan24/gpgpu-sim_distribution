@@ -1137,6 +1137,7 @@ void scheduler_unit::cycle() {
   bool issued_inst = false;  // of these we issued one
 
   order_warps();
+  // TODO: Task 3: Check every warp and count number of branch instructions
   for (std::vector<shd_warp_t *>::const_iterator iter =
            m_next_cycle_prioritized_warps.begin();
        iter != m_next_cycle_prioritized_warps.end(); iter++) {
@@ -1228,6 +1229,10 @@ void scheduler_unit::cycle() {
                 previous_issued_inst_exec_type = exec_unit_type_t::MEM;
               }
             } else {
+              // TODO: Task 3
+              if (pI->op == BRANCH_OP) {
+                m_num_branches_executed++;
+              }
               bool sp_pipe_avail =
                   (m_shader->m_config->gpgpu_num_sp_units > 0) &&
                   m_sp_out->has_free(m_shader->m_config->sub_core_model, m_id);
@@ -1367,6 +1372,7 @@ void scheduler_unit::cycle() {
                   previous_issued_inst_exec_type =
                       exec_unit_type_t::SPECIALIZED;
                 }
+                // TODO: Task 3
               }
 
             }  // end of else

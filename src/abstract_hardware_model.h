@@ -414,6 +414,9 @@ class simt_stack {
   void resume(char *fname);
   void print_checkpoint(FILE *fout) const;
 
+  // TODO: Task 3
+  int m_num_branches_diverged;
+
  protected:
   unsigned m_warp_id;
   unsigned m_warp_size;

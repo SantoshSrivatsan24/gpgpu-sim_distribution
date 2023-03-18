@@ -429,6 +429,10 @@ class scheduler_unit {  // this can be copied freely, so can be used in std
   std::vector<register_set *> &m_spec_cores_out;
 
   int m_id;
+
+  // TODO: Task 3
+  int m_num_branches_executed;
+  int m_num_branches_diverged;
 };
 
 class lrr_scheduler : public scheduler_unit {

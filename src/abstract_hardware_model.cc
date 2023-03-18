@@ -1171,6 +1171,8 @@ void simt_stack::update(simt_mask_t &thread_done, addr_vector_t &next_pc,
   m_stack.pop_back();
 
   if (warp_diverged) {
+    // TODO: Task 3
+    m_num_branches_diverged++;
     m_gpu->gpgpu_ctx->stats->ptx_file_line_stats_add_warp_divergence(top_pc, 1);
   }
 }
